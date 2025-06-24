@@ -1,0 +1,5 @@
+2025-06-24 14:33:12,450 - ERROR - Order Error: APIError(code=-2015): Invalid API-key, IP, or permissions for action
+2025-06-24 14:35:13,977 - ERROR - Order Error: APIError(code=-2015): Invalid API-key, IP, or permissions for action
+2025-06-24 14:41:32,610 - ERROR - Order Error: APIError(code=-2015): Invalid API-key, IP, or permissions for action
+2025-06-24 14:45:45,454 - ERROR - Order Error: APIError(code=-2015): Invalid API-key, IP, or permissions for action
+2025-06-24 14:46:17,799 - INFO - Order Placed: {'orderId': 4681245481, 'symbol': 'BTCUSDT', 'status': 'NEW', 'clientOrderId': 'x-Cb7ytekJ288103e95a539c636a1534', 'price': '0.00', 'avgPrice': '0.00', 'origQty': '0.010', 'executedQty': '0.000', 'cumQty': '0.000', 'cumQuote': '0.00000', 'timeInForce': 'GTC', 'type': 'MARKET', 'reduceOnly': False, 'closePosition': False, 'side': 'BUY', 'positionSide': 'BOTH', 'stopPrice': '0.00', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'MARKET', 'priceMatch': 'NONE', 'selfTradePreventionMode': 'EXPIRE_MAKER', 'goodTillDate': 0, 'updateTime': 1750756578368}
