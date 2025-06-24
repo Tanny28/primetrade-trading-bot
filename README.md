@@ -33,17 +33,29 @@ A modular Python project that connects to Binance Futures **Testnet**, allowing 
 ## 📁 Folder Structure
 
 primetrade-trading-bot/
+
 ├── .env # Your Binance API credentials
+
 ├── .gitignore # Prevents uploading secrets
+
 ├── README.md # This file
+
 ├── requirements.txt # Dependencies
+
 ├── bot.py # Bot logic using Binance API
+
 ├── config.py # Loads keys from .env
+
 ├── ui.py # Streamlit app
+
 ├── logs/
+
 │ └── order_log.txt # Trade and error logs
+
 └── utils/
+
 ├── logger.py # Logging helper
+
 └── validator.py # Input validation
 
 ---
