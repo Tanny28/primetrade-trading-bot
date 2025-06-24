@@ -1,27 +1,33 @@
-from binance.enums import *
-from config import get_binance_client
-from utils.logger import log_info, log_error
+from binance.um_futures import UMFutures
+from utils.logger import log_order
+from utils.validator import validate_inputs
+from config import API_KEY, API_SECRET
 
-client = get_binance_client()
+def place_order(symbol, side, order_type, quantity, limit_price=None):
+    client = UMFutures(key=API_KEY, secret=API_SECRET, base_url="https://testnet.binancefuture.com")
+    
+    if not validate_inputs(symbol, side, order_type, quantity, limit_price):
+        return {"error": "Invalid input parameters."}
 
-def place_order(symbol, side, order_type, quantity):
     try:
         params = {
             "symbol": symbol,
-            "side": SIDE_BUY if side == "BUY" else SIDE_SELL,
-            "type": ORDER_TYPE_MARKET if order_type == "MARKET" else ORDER_TYPE_LIMIT,
-            "quantity": quantity
+            "side": side,
+            "type": order_type,
+            "quantity": quantity,
         }
-
         if order_type == "LIMIT":
+            if not limit_price:
+                return {"error": "Limit price is required for LIMIT orders."}
             params.update({
-                "timeInForce": TIME_IN_FORCE_GTC,
-                "price": "20000"  # Dummy limit price, update as needed
+                "price": str(limit_price),
+                "timeInForce": "GTC"
             })
 
-        order = client.futures_create_order(**params)
-        log_info(f"Order placed: {order}")
-        return order, None
+        order = client.new_order(**params)
+        log_order(order)
+        return order
+
     except Exception as e:
-        log_error(str(e))
-        return None, str(e)
+        log_order(f"Error: {str(e)}")
+        return {"error": str(e)}
